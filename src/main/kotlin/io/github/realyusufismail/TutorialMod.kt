@@ -1,6 +1,9 @@
 package io.github.realyusufismail
 
 import io.github.realyusufismail.TutorialMod.TutorialMod.MOD_ID
+import io.github.realyusufismail.core.init.BlockInit
+import io.github.realyusufismail.core.init.CreativeModeTabInit
+import io.github.realyusufismail.core.init.ItemInit
 import net.neoforged.fml.ModList
 import net.neoforged.fml.common.Mod
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent
@@ -12,6 +15,10 @@ import thedarkcolour.kotlinforforge.neoforge.KotlinModLoadingContext
 class TutorialMod {
     init {
         val bus = KotlinModLoadingContext.get().getKEventBus()
+
+        BlockInit.BLOCKS.register(bus)
+        ItemInit.ITEMS.register(bus)
+        CreativeModeTabInit.CREATIVE_MODE_TABS.register(bus)
 
         KotlinModLoadingContext.get().getKEventBus().addListener(FMLClientSetupEvent::class.java) {
                 event: FMLClientSetupEvent ->
